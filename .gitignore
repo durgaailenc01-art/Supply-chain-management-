@@ -1,0 +1,14 @@
+.venv/
+.python-deps/
+__pycache__/
+*.pyc
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+data/full/
+data/starter/runs/
+data/starter/latest_run.json
+data/starter/latest_run.json.tmp
+data/*/exports/
+*.log

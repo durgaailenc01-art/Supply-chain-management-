@@ -1,0 +1,9 @@
+zone_id,warehouse_id,name,zone_type,status
+ZON-WH-001-01,WH-001,Ambient,ambient,active
+ZON-WH-001-02,WH-001,Bulk,bulk,active
+ZON-WH-001-03,WH-001,Chilled,chilled,active
+ZON-WH-001-04,WH-001,Hazmat,hazmat,active
+ZON-WH-002-01,WH-002,Ambient,ambient,active
+ZON-WH-002-02,WH-002,Bulk,bulk,active
+ZON-WH-002-03,WH-002,Chilled,chilled,active
+ZON-WH-002-04,WH-002,Hazmat,hazmat,active

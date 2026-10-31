@@ -1,0 +1,3 @@
+warehouse_id,name,status,labor_capacity_per_shift
+WH-001,Demo warehouse 1,active,80
+WH-002,Demo warehouse 2,active,80
