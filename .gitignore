@@ -12,3 +12,4 @@ data/starter/latest_run.json
 data/starter/latest_run.json.tmp
 data/*/exports/
 *.log
+*.prof

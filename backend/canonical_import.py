@@ -831,9 +831,14 @@ def _capacity_excess(package: dict, location: dict, count: int) -> list[str]:
 def _reachable(tables: dict, warehouse: str, start: str, target: str, mode: str) -> bool:
     if start == target:
         return True
+    return target in _reachable_nodes(tables, warehouse, start, mode)
+
+
+def _reachable_nodes(tables: dict, warehouse: str, start: str, mode: str) -> set[str]:
+    """One traversal serves every destination from the same warehouse depot."""
     nodes = {r["node_id"] for r in tables["aisle_nodes"] if r["warehouse_id"] == warehouse and r["status"] == "active"}
-    if start not in nodes or target not in nodes:
-        return False
+    if start not in nodes:
+        return set()
     links = defaultdict(list)
     for edge in tables["aisle_edges"]:
         if edge["warehouse_id"] != warehouse or edge["status"] != "active" or edge["travel_mode"] not in (mode, "both"):
@@ -845,12 +850,10 @@ def _reachable(tables: dict, warehouse: str, start: str, target: str, mode: str)
     seen, pending = {start}, [start]
     for current in pending:
         for neighbor in links[current]:
-            if neighbor == target:
-                return True
             if neighbor not in seen:
                 seen.add(neighbor)
                 pending.append(neighbor)
-    return False
+    return seen
 
 
 def _validate_physical(manifest: dict, tables: dict[str, list[dict]], check: _Check) -> dict[str, list[str]]:
@@ -870,8 +873,19 @@ def _validate_physical(manifest: dict, tables: dict[str, list[dict]], check: _Ch
         if row["status"] == "active":
             assigned[row["location_id"]].add(row["sku_id"])
     caps = defaultdict(list)
+    caps_by_location = defaultdict(dict)
     for row in tables["location_pack_capacities"]:
         caps[(row["location_id"], row["packaging_profile_id"])].append(row)
+        caps_by_location[row["location_id"]][row["packaging_profile_id"]] = caps[(row["location_id"], row["packaging_profile_id"])]
+    accesses_by_location = defaultdict(list)
+    for access in tables["location_access"]:
+        if access["status"] == "active" and access["travel_mode"] in {"picker", "both"}:
+            accesses_by_location[access["location_id"]].append(access)
+    reachable_by_depot = {}
+    profiles_by_sku = defaultdict(list)
+    for profile in tables["sku_profiles"]:
+        profiles_by_sku[profile["sku_id"]].append(profile)
+    profile_cache = {}
     plan_items = defaultdict(dict)
     for row in tables["shared_bin_plan_items"]:
         plan_items[row["plan_id"]][row["packaging_profile_id"]] = row["max_handling_unit_count"]
@@ -907,7 +921,10 @@ def _validate_physical(manifest: dict, tables: dict[str, list[dict]], check: _Ch
         total_weight = Decimal(0)
         total_volume = Decimal(0)
         known_physical = True
-        profiles = {sid: _profile_for(tables, sid, warehouse, snapshot) for sid in present_skus}
+        for sid in present_skus:
+            if (sid, warehouse) not in profile_cache:
+                profile_cache[sid, warehouse] = _profile_for({"sku_profiles": profiles_by_sku[sid]}, sid, warehouse, snapshot)
+        profiles = {sid: profile_cache[sid, warehouse] for sid in present_skus}
         for sid, profile in profiles.items():
             if profile is None:
                 check.incident("profile_coverage", warehouse, location_id, f"SKU {sid} has no unique effective storage profile")
@@ -968,7 +985,7 @@ def _validate_physical(manifest: dict, tables: dict[str, list[dict]], check: _Ch
                 check.incident("unsafe_joint_plan", warehouse, location_id, "plan includes a package that cannot fit")
             if any(pid in pkg and count > _optimistic_pack_limit(pkg[pid], location) for pid, count in items.items()):
                 check.incident("unsafe_joint_plan", warehouse, location_id, "plan maxima exceed orientation, floor-space or stack upper bound")
-        for profile_id, approved_rows in ((pid, caps[(location_id, pid)]) for pid in {key[1] for key in caps if key[0] == location_id}):
+        for profile_id, approved_rows in caps_by_location[location_id].items():
             physical = pkg.get(profile_id)
             if not physical:
                 continue
@@ -987,13 +1004,15 @@ def _validate_physical(manifest: dict, tables: dict[str, list[dict]], check: _Ch
                         check.incident("co_storage", warehouse, location_id, f"no approved shared-bin pair for {first} and {second}")
         if is_candidate:
             start = facility["default_pick_node_id"] if facility else None
-            accesses = [a for a in tables["location_access"] if a["location_id"] == location_id and a["status"] == "active" and a["travel_mode"] in {"picker", "both"}]
-            if not start or not any(_reachable(tables, warehouse, start, a["node_id"], "picker") for a in accesses):
+            accesses = accesses_by_location[location_id]
+            if start and (warehouse, start) not in reachable_by_depot:
+                reachable_by_depot[warehouse, start] = _reachable_nodes(tables, warehouse, start, "picker")
+            if not start or not any(a["node_id"] == start or a["node_id"] in reachable_by_depot[warehouse, start] for a in accesses):
                 check.incident("route_unreachable", warehouse, location_id, "no active picker path from default depot to pick face")
-            has_valid_capacity = any(key[0] == location_id and pkg.get(key[1]) and any(
+            has_valid_capacity = any(pkg.get(profile_id) and any(
                 approved["certified_at"] <= snapshot and (approved["valid_until"] is None or snapshot < approved["valid_until"])
-                and not _capacity_excess(pkg[key[1]], location, approved["max_handling_unit_count"])
-                for approved in approved_rows) for key, approved_rows in caps.items())
+                and not _capacity_excess(pkg[profile_id], location, approved["max_handling_unit_count"])
+                for approved in approved_rows) for profile_id, approved_rows in caps_by_location[location_id].items())
             if not rows and not has_valid_capacity and not plans[location_id]:
                 check.incident("no_pack_capacity", warehouse, location_id, "no certified package capacity for an empty candidate bin")
             if not check.blocked[warehouse][location_id]:

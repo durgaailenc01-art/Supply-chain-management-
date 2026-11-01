@@ -7,6 +7,7 @@ import json
 import logging
 import re
 import tempfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -121,6 +122,7 @@ def _canonicalize(table: str, rows: list[dict[str, str]]) -> list[dict[str, str]
 
 
 def run_upload(files: list[tuple[str, bytes]], warehouse_name: str, snapshot_at: str) -> dict:
+    started = time.perf_counter()
     try:
         snapshot = datetime.fromisoformat(snapshot_at.replace("Z", "+00:00"))
     except ValueError as exc:
@@ -235,4 +237,9 @@ def run_upload(files: list[tuple[str, bytes]], warehouse_name: str, snapshot_at:
     for warning in imported.report["warnings"]:
         if warning["code"] == "unsafe_pack_capacity":
             LOG.warning("Excluded unsafe capacity certificate: %s", warning["detail"])
-    return optimize_canonical(imported, match[0]["warehouse_id"], match[0]["name"])
+    validated_at = time.perf_counter()
+    LOG.info("Upload parsing and validation complete | %.3f s", validated_at - started)
+    result = optimize_canonical(imported, match[0]["warehouse_id"], match[0]["name"])
+    LOG.info("Upload timing | parsing_validation=%.3f s | optimization=%.3f s | total=%.3f s",
+             validated_at - started, time.perf_counter() - validated_at, time.perf_counter() - started)
+    return result
