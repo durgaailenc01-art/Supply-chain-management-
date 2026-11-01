@@ -112,6 +112,8 @@ export type LiveResult = {
 
 export type LiveEvaluation = { observed_skus: number; proposed_skus: number; coverage_pct: number | null; placement_agreement_pct: number; evaluated_moves: number; move_agreement_pct: number | null; measured_routes: number; route_mae_m: number | null; note: string }
 
+export type SourceMapping = { source: string; table: string; mapping: Record<string, string>; rows: number; columns: string[]; blank_cells: number; sample: Record<string, string>[] }
+export type ImportInspection = { sources: SourceMapping[]; schemas: Record<string, { name: string; required: boolean; type: string }[]>; required_tables: string[]; note: string }
 const base = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 
 export function apiUrl(path: string): string {
@@ -148,10 +150,16 @@ export const api = {
   validation: () => request<Validation>('/validation'),
   forecast: () => request<Forecast>('/demand-forecast'),
   optimize: () => request<Overview['metrics']>('/optimize', { method: 'POST' }),
-  optimizeUpload: (files: File[], warehouseName: string, snapshotAt: string) => {
+  inspectUpload: (files: File[]) => {
+    const form = new FormData()
+    files.forEach(file => form.append('files', file))
+    return request<ImportInspection>('/live/inspect', { method: 'POST', body: form })
+  },
+  optimizeUpload: (files: File[], warehouseName: string, snapshotAt: string, mappings?: SourceMapping[]) => {
     const form = new FormData()
     form.append('warehouse_name', warehouseName)
     form.append('snapshot_at', snapshotAt)
+    if (mappings) form.append('mappings', JSON.stringify(mappings))
     files.forEach(file => form.append('files', file))
     return request<LiveResult>('/live/optimize', { method: 'POST', body: form })
   },

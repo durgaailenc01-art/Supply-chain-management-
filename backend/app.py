@@ -17,6 +17,7 @@ from .validate import validate_dataset
 from .live_upload import run_upload
 from .live_export import PLACEMENT_FIELDS, MOVEMENT_FIELDS, csv_bytes, export_rows, xlsx_bytes
 from .live_evaluation import evaluate
+from .schema_adapter import inspect_files, mapped_files
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 
@@ -136,7 +137,7 @@ def optimize() -> dict:
 
 @app.post("/api/live/optimize")
 async def optimize_uploaded(
-    warehouse_name: str = Form(...), snapshot_at: str = Form(...), files: list[UploadFile] = File(...)
+    warehouse_name: str = Form(...), snapshot_at: str = Form(...), files: list[UploadFile] = File(...), mappings: str | None = Form(None)
 ) -> dict:
     if len(files) > 32:
         raise HTTPException(422, "Upload at most 32 files")
@@ -147,6 +148,15 @@ async def optimize_uploaded(
             raise HTTPException(413, f"{upload.filename} is larger than 25 MB")
         payload.append((upload.filename or "", content))
     try:
+        if mappings:
+            try:
+                specs = json.loads(mappings)
+            except ValueError as exc:
+                raise ValueError("Column mappings must be valid JSON.") from exc
+            if not isinstance(specs, list) or any(not isinstance(spec, dict) for spec in specs):
+                raise ValueError("Column mappings must be a list of source mappings.")
+            payload = mapped_files(payload, specs)
+            logging.getLogger("slotwise.live").info("Applied explicit schema mappings: %s", [(spec.get("source"), spec.get("table")) for spec in specs])
         live_log = logging.getLogger("slotwise.live")
         live_log.info("Starting uploaded optimization | warehouse=%s | snapshot=%s | files=%d", warehouse_name, snapshot_at, len(payload))
         result = await asyncio.to_thread(run_upload, payload, warehouse_name, snapshot_at)
@@ -162,6 +172,24 @@ async def optimize_uploaded(
         return result
     except ValueError as exc:
         logging.getLogger("slotwise.live").warning("Upload rejected: %s", exc)
+        raise HTTPException(422, str(exc)) from exc
+
+
+@app.post("/api/live/inspect")
+async def inspect_uploaded(files: list[UploadFile] = File(...)):
+    if len(files) > 32:
+        raise HTTPException(422, "Upload at most 32 files.")
+    payload = []
+    for upload in files:
+        content = await upload.read(25_000_001)
+        if len(content) > 25_000_000:
+            raise HTTPException(413, "Each file must be 25 MB or smaller.")
+        payload.append((upload.filename or "", content))
+    try:
+        result = await asyncio.to_thread(inspect_files, payload)
+        logging.getLogger("slotwise.live").info("Dataset inspection: %s", [(source["source"], source["rows"], source["table"]) for source in result["sources"]])
+        return result
+    except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
 
 
