@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { api, apiUrl, type LiveEvaluation, type LiveResult, type Warehouse } from './api'
+import { api, apiUrl, type ImportInspection, type LiveEvaluation, type LiveResult, type Warehouse } from './api'
 
 const fmt = (n: number | null | undefined, digits = 0) => n == null ? '—' : new Intl.NumberFormat(undefined, { maximumFractionDigits: digits }).format(n)
 
@@ -13,6 +13,9 @@ export default function LiveWorkspace({ warehouses }: { warehouses: Warehouse[] 
   const [warehouseName, setWarehouseName] = useState('')
   const [snapshotLocal, setSnapshotLocal] = useState('')
   const [files, setFiles] = useState<File[]>([])
+  const [inspection, setInspection] = useState<ImportInspection | null>(null)
+  const [inspecting, setInspecting] = useState(false)
+  const [useMapping, setUseMapping] = useState(false)
   const [running, setRunning] = useState(false)
   const [processingSeconds, setProcessingSeconds] = useState(0)
   const [error, setError] = useState('')
@@ -32,6 +35,8 @@ export default function LiveWorkspace({ warehouses }: { warehouses: Warehouse[] 
 
   async function selectFiles(selected: File[]) {
     setFiles(selected)
+    setInspection(null)
+    setUseMapping(false)
     setError('')
     const manifest = selected.find(file => file.name.toLowerCase() === 'manifest.json')
     if (!manifest) return
@@ -57,7 +62,7 @@ export default function LiveWorkspace({ warehouses }: { warehouses: Warehouse[] 
     setRunning(true)
     setProcessingSeconds(0)
     try {
-      const analysis = await api.optimizeUpload(files, warehouseName.trim(), new Date(snapshotLocal).toISOString())
+      const analysis = await api.optimizeUpload(files, warehouseName.trim(), new Date(snapshotLocal).toISOString(), useMapping ? inspection?.sources : undefined)
       setResult(analysis)
       setEvaluation(null)
       setEvaluationError('')
@@ -89,6 +94,13 @@ export default function LiveWorkspace({ warehouses }: { warehouses: Warehouse[] 
   }
 
   const selected = result?.recommendations.find(row => row.sku_id === selectedSku)
+  async function inspectUpload() {
+    setInspecting(true)
+    setError('')
+    try { setInspection(await api.inspectUpload(files)) }
+    catch (issue) { setError((issue as Error).message) }
+    finally { setInspecting(false) }
+  }
   const change = result?.metrics.optimization_score
   const modeledMetersSaved = result && change != null ? result.metrics.baseline_pick_distance_m * change / 100 : null
   const filtered = result?.recommendations.filter(row => decisionFilter === 'all' || row.decision === decisionFilter) || []
@@ -136,9 +148,11 @@ export default function LiveWorkspace({ warehouses }: { warehouses: Warehouse[] 
     {open && <div className="live-modal-backdrop" onMouseDown={event => { if (event.target === event.currentTarget && !running) setOpen(false) }}><div className="live-modal" role="dialog" aria-modal="true" aria-labelledby="upload-title"><div className="live-modal-head"><div><span className="eyebrow">NEW ANALYSIS</span><h2 id="upload-title">Upload warehouse snapshot</h2></div><button type="button" aria-label="Close upload dialog" onClick={() => setOpen(false)} disabled={running}>×</button></div><form onSubmit={submit}>
       <label>Warehouse name or ID<input list="known-warehouses" value={warehouseName} onChange={event => setWarehouseName(event.target.value)} placeholder="Match the warehouse in your files" required /><datalist id="known-warehouses">{warehouses.map(w => <option key={w.warehouse_id} value={w.name} />)}</datalist></label>
       <label>Exact snapshot date and time<input type="datetime-local" step="1" value={snapshotLocal} onChange={event => setSnapshotLocal(event.target.value)} required /><small>Entered in your computer's time zone and sent to the server in UTC. It must match the timestamp in your manifest and every inventory and slot assignment row. Include seconds when your export has them.</small></label>
-      <label>Warehouse data files<input type="file" accept=".csv,.xlsx,.xlsm,.json" multiple onChange={event => void selectFiles(Array.from(event.target.files || []))} required /><small>Canonical CSV package plus manifest.json, or canonical CSV/Excel tables without a manifest. Selecting a manifest fills its warehouse ID and exact snapshot time. Missing physical stock, dimensions, policy or aisle data stops optimization.</small></label>
+      <label>Warehouse data files<input type="file" accept=".csv,.xlsx,.xlsm,.json" multiple onChange={event => void selectFiles(Array.from(event.target.files || []))} required /><small>Upload CSV or Excel files with your own column names, then choose “Inspect data and map columns”. You can inspect files before entering a warehouse or snapshot. Canonical packages also work directly. Safe placement recommendations require warehouse measurements, stock, policies and routes.</small></label>
       <details className="upload-help"><summary>Which tables are required?</summary><p>warehouses, zones, locations, skus, sku_profiles, sku_packaging_profiles, inventory_by_location, slot_assignments, aisle_nodes, aisle_edges, location_access, location_hazard_permissions and hazard_segregation_rules. Add orders with order_lines or pick_events for demand. Shared bins need co_storage_rules and shared_bin_plans with items.</p></details>
       {files.length > 0 && <div className="selected-files">{files.length} selected: {files.map(file => file.name).join(', ')}</div>}
+      {files.length > 0 && <button type="button" className="button" disabled={inspecting || running} onClick={() => void inspectUpload()}>{inspecting ? 'Inspecting files…' : 'Inspect data and map columns'}</button>}
+      {inspection && <section className="import-inspection"><h3>Dataset inspection</h3><p>{inspection.note}</p>{!files.some(file => file.name.toLowerCase() === 'manifest.json') && <label><input type="checkbox" checked={useMapping} onChange={event => setUseMapping(event.target.checked)} />Use these column mappings when processing</label>}{inspection.sources.map((source, index) => <details key={source.source}><summary>{source.source} · {fmt(source.rows)} rows · {source.columns.length} columns · {source.blank_cells} blank cells</summary><label>Canonical table<select value={source.table} onChange={event => setInspection({ ...inspection, sources: inspection.sources.map((item, i) => i === index ? { ...item, table: event.target.value, mapping: {} } : item) })}><option value="">Analysis only / ignore for placements</option>{Object.keys(inspection.schemas).map(table => <option key={table}>{table}</option>)}</select></label><div className="import-columns">{source.columns.map(column => <label key={column}>{column}<select aria-label={`Map ${source.source} ${column}`} value={source.mapping[column] || ''} onChange={event => setInspection({ ...inspection, sources: inspection.sources.map((item, i) => i === index ? { ...item, mapping: { ...item.mapping, [column]: event.target.value } } : item) })}><option value="">Leave unmapped</option>{(inspection.schemas[source.table] || []).map(field => <option key={field.name} value={field.name}>{field.name} ({field.type}){field.required ? ' *' : ''}</option>)}</select></label>)}</div><p>Required fields without a mapping: {(inspection.schemas[source.table] || []).filter(field => field.required && !Object.values(source.mapping).includes(field.name)).map(field => field.name).join(', ') || 'None'}</p><details><summary>Preview first three rows</summary><pre>{JSON.stringify(source.sample, null, 2)}</pre></details></details>)}<p>Warehouse tables still needed: {inspection.required_tables.filter(table => !inspection.sources.some(source => source.table === table)).join(', ') || 'All required table types detected; row validation runs during processing.'}</p></section>}
       {error && <div className="message error" role="alert">{error}</div>}
       <div className="live-modal-actions"><button type="button" className="button" onClick={() => setOpen(false)} disabled={running}>Cancel</button><button type="submit" className="button primary" disabled={running}>{running ? 'Validating and optimizing…' : 'Process dataset'}</button></div>
       {running && <div className="live-processing" role="status"><strong>Processing your files… {processingSeconds}s elapsed</strong><p>The request is still running. Large multi-warehouse packages can take tens of seconds to validate and optimize. Detailed execution logs appear in the FastAPI terminal.</p></div>}

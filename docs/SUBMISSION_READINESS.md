@@ -16,7 +16,7 @@ This assessment distinguishes the **legacy generated assessment demo** from the 
 | CSV/JSON/SQL outputs | Legacy `backend/export.py`; live CSV/XLSX result export | **Available across workflows.** Not every format is available in each workflow. |
 | Clear setup and verification | Root `README.md`, backend tests, frontend build | **Documented.** Fresh clone should be retested from public `main` before submission. |
 | Public repository, meaningful commits, attribution | Git history and public GitHub repository | **Review before submission.** Verify all intended files are committed and visible on `main`; document external benchmark licenses if redistributed. |
-| Prompt history and AI-use disclosure | Supplied FAQ explicitly requires this | **Outstanding submission item.** Export the actual prompts/responses used, disclose what AI accelerated and what you personally reviewed. Do not invent or summarize an incomplete history as complete. |
+| Prompt history and AI-use disclosure | Root `prompts.md`, linked prominently from README | **Available user prompts recorded.** The file identifies unavailable attachment contents and omitted diagnostics. Assistant responses and earlier unavailable chats are not included. The submitter should explain their personal review and validation. |
 
 ## Important limitations to explain to evaluators
 
