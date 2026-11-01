@@ -1,0 +1,1 @@
+pick_event_id,warehouse_id,order_line_id,sku_id,location_id,lot_id,picked_qty,event_at,started_at,status,wave_id,route_id,route_sequence,picker_pseudonym,distance_m,distance_method

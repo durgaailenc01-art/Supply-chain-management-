@@ -1,0 +1,1 @@
+replenishment_event_id,warehouse_id,sku_id,lot_id,source_location_id,source_node_id,destination_location_id,moved_qty,event_at,requested_at,started_at,completed_at,status,method_code,worker_pseudonym,distance_m,distance_method

@@ -143,6 +143,14 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
             plans[plan["location_id"]].append(plan_items[plan["plan_id"]])
     co = {(min(r["group_a"], r["group_b"]), max(r["group_a"], r["group_b"])): r["allowed"] for r in _active([r for r in t["co_storage_rules"] if r["warehouse_id"] == warehouse], snapshot)}
     hazards = {(min(r["hazard_group_a"], r["hazard_group_b"]), max(r["hazard_group_a"], r["hazard_group_b"])): r for r in _active([r for r in t["hazard_segregation_rules"] if r["warehouse_id"] == warehouse], snapshot)}
+    active_profiles = {sku_id: _profile_for(t, sku_id, warehouse, snapshot) for sku_id in {r["sku_id"] for r in stock}}
+    hazard_groups = {profile["hazard_group"] for profile in active_profiles.values() if profile}
+    unrestricted_hazards = bool(hazard_groups) and all(
+        (rule := hazards.get(tuple(sorted((first, second))))) is not None
+        and rule["allow_same_location"] and not rule["prohibit_same_zone"]
+        and rule["minimum_clearance_m"] == 0 and not rule["barrier_required"]
+        for first in hazard_groups for second in hazard_groups
+    )
     permissions = {(r["location_id"], r["hazard_group"]) for r in t["location_hazard_permissions"] if r["warehouse_id"] == warehouse}
     separation = {(min(r["location_a_id"], r["location_b_id"]), max(r["location_a_id"], r["location_b_id"])): r for r in t["hazard_separation_evidence"] if r["warehouse_id"] == warehouse}
     occupied = defaultdict(list)
@@ -160,7 +168,7 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
 
     def feasible(sku: str, destination: str) -> tuple[bool, list[str], float | None]:
         location = locations[destination]
-        profile = _profile_for(t, sku, warehouse, snapshot)
+        profile = active_profiles.get(sku)
         reasons = []
         if profile is None:
             return False, ["missing SKU storage profile"], None
@@ -175,7 +183,7 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
         if (destination, profile["hazard_group"]) not in permissions:
             reasons.append("hazard permission")
         for other in distinct - {sku}:
-            other_profile = _profile_for(t, other, warehouse, snapshot)
+            other_profile = active_profiles.get(other)
             if not other_profile:
                 reasons.append("other SKU profile missing")
                 continue
@@ -224,11 +232,11 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
             reasons.append("no physical stock")
             face_units = None
         # Apply pairwise physical separation against stock that remains or has already been placed.
-        for other_location, other_rows in occupied.items():
+        for other_location, other_rows in (() if unrestricted_hazards else occupied.items()):
             if other_location == destination or not other_rows or other_location not in locations:
                 continue
             for other_sku in {r["sku_id"] for r in other_rows}:
-                other_profile = _profile_for(t, other_sku, warehouse, snapshot)
+                other_profile = active_profiles.get(other_sku)
                 if not other_profile:
                     continue
                 pair = tuple(sorted((profile["hazard_group"], other_profile["hazard_group"])))
@@ -442,6 +450,19 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
                                 "current_estimated_refill_cycles": None, "estimated_refill_cycles": None, "reason": "No available, unheld stock in an assigned pick face; no physical move was inferred.",
                                 "constraint_violations": ["no movable pick stock"]})
     recommendations.sort(key=lambda r: (-r["pick_count"], r["sku_id"]))
+    movement_lines = []
+    for recommendation in recommendations:
+        destination = recommendation["proposed_location_id"]
+        if not destination:
+            continue
+        for row in movable[recommendation["sku_id"]]:
+            if row["location_id"] == destination:
+                continue
+            movement_lines.append({"sku_id": row["sku_id"], "source_location_id": row["location_id"],
+                                   "proposed_location_id": destination, "packaging_profile_id": row["packaging_profile_id"],
+                                   "lot_id": row["lot_id"], "handling_unit_count": row["handling_unit_count"],
+                                   "on_hand_qty": float(row["on_hand_qty"]), "base_uom": skus[row["sku_id"]]["base_uom"],
+                                   "stock_status": row["stock_status"], "action": "proposed_move_for_review"})
     baseline = sum(r["pick_count"] * r["current_round_trip_m"] for r in recommendations if r["current_round_trip_m"] is not None)
     proposed = sum(r["pick_count"] * r["proposed_round_trip_m"] for r in recommendations if r["proposed_round_trip_m"] is not None)
     comparable = [r for r in recommendations if r["current_round_trip_m"] is not None and r["proposed_round_trip_m"] is not None]
@@ -482,7 +503,7 @@ def optimize_canonical(imported: ImportResult, warehouse: str, warehouse_name: s
                          "objective_gap_pct": 0.0 if search_status == "optimal" else None},
               "validation": {"warnings": imported.report["warnings"], "incidents": imported.report["incidents"],
                              "blocked_locations": imported.report["warehouses"][warehouse]["blocked_locations"]},
-              "recommendations": recommendations}
+              "recommendations": recommendations, "movement_lines": movement_lines}
     if any(warning["code"] == "post_snapshot_demand" for warning in imported.report["warnings"]):
         result["assumptions"].append("Orders later than the physical snapshot were used only as a post-snapshot demand window for scenario analysis; align the demand window with a current inventory snapshot before operational use.")
     if any(warning["code"] == "future_snapshot_preview" for warning in imported.report["warnings"]):

@@ -2,22 +2,27 @@
 from __future__ import annotations
 
 import json
+import asyncio
 import logging
 import os
+import uuid
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 
 from .engine import detect_exceptions, metrics as calculate_metrics, optimize_dataset, read_csv, workload
 from .validate import validate_dataset
 from .live_upload import run_upload
+from .live_export import PLACEMENT_FIELDS, MOVEMENT_FIELDS, csv_bytes, export_rows, xlsx_bytes
+from .live_evaluation import evaluate
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 
 DATASET = Path(os.getenv("SLOTTING_DATA_DIR", "data/starter"))
 app = FastAPI(title="Warehouse Slotting Optimizer", version="0.1.0")
+LIVE_ANALYSES: dict[str, dict] = {}
 cors_origins = [origin.strip() for origin in os.getenv("SLOTTING_CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if origin.strip()]
 app.add_middleware(CORSMiddleware, allow_origins=cors_origins,
                    allow_credentials=False, allow_methods=["GET", "POST"], allow_headers=["*"])
@@ -144,7 +149,12 @@ async def optimize_uploaded(
     try:
         live_log = logging.getLogger("slotwise.live")
         live_log.info("Starting uploaded optimization | warehouse=%s | snapshot=%s | files=%d", warehouse_name, snapshot_at, len(payload))
-        result = run_upload(payload, warehouse_name, snapshot_at)
+        result = await asyncio.to_thread(run_upload, payload, warehouse_name, snapshot_at)
+        analysis_id = uuid.uuid4().hex
+        result["analysis_id"] = analysis_id
+        if len(LIVE_ANALYSES) >= 10:
+            LIVE_ANALYSES.pop(next(iter(LIVE_ANALYSES)))
+        LIVE_ANALYSES[analysis_id] = result
         live_log.info("Completed uploaded optimization | dataset=%s | status=%s | assigned=%s | unassigned=%s | score=%s | incidents=%d",
                       result["dataset_id"], result["status"], result["metrics"]["assigned_skus"],
                       result["metrics"]["unassigned_skus"], result["metrics"]["optimization_score"],
@@ -153,6 +163,42 @@ async def optimize_uploaded(
     except ValueError as exc:
         logging.getLogger("slotwise.live").warning("Upload rejected: %s", exc)
         raise HTTPException(422, str(exc)) from exc
+
+
+@app.get("/api/live/export/{analysis_id}/{format}")
+def export_live(analysis_id: str, format: str):
+    result = LIVE_ANALYSES.get(analysis_id)
+    if result is None:
+        raise HTTPException(404, "Analysis expired. Process the dataset again to download its results.")
+    placements, movements = export_rows(result)
+    if format == "placements.csv":
+        body, media = csv_bytes(PLACEMENT_FIELDS, placements), "text/csv; charset=utf-8"
+    elif format == "movements.csv":
+        body, media = csv_bytes(MOVEMENT_FIELDS, movements), "text/csv; charset=utf-8"
+    elif format == "results.xlsx":
+        body, media = xlsx_bytes(result), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    else:
+        raise HTTPException(404, "Unknown export format")
+    filename = f"slotwise-{result['warehouse_id']}-{format}"
+    return Response(body, media_type=media, headers={"Content-Disposition": f'attachment; filename="{filename}"'})
+
+
+@app.post("/api/live/evaluate/{analysis_id}")
+async def evaluate_live(analysis_id: str, file: UploadFile = File(...)):
+    result = LIVE_ANALYSES.get(analysis_id)
+    if result is None:
+        raise HTTPException(404, "Analysis expired. Process the dataset again before evaluating outcomes.")
+    if not (file.filename or "").lower().endswith(".csv"):
+        raise HTTPException(422, "Upload an outcome CSV file.")
+    content = await file.read(5_000_001)
+    if len(content) > 5_000_000:
+        raise HTTPException(413, "Outcome CSV must be 5 MB or smaller.")
+    try:
+        evaluation = evaluate(result, content)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+    logging.getLogger("slotwise.live").info("Observed evaluation | analysis=%s | %s", analysis_id, evaluation)
+    return evaluation
 
 
 @app.get("/api/export/{table}")
