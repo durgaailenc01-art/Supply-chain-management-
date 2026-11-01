@@ -267,7 +267,7 @@ def _load(path: Path, check: _Check) -> tuple[dict, dict[str, list[dict]]]:
             continue
         info = meta[f"{name}.csv"]
         if isinstance(info, dict) and hashlib.sha256(raw_bytes).hexdigest() != info.get("sha256"):
-            check.error("checksum", name, None, "SHA-256 does not match manifest")
+            check.error("checksum", name, None, "SHA-256 does not match manifest: file bytes changed since export (possibly Git/Excel line-ending conversion). Re-extract the original package or obtain a matching manifest from the exporter; do not mix exports.")
         rows = _read_table(file, name, check)
         tables[name] = rows
         if isinstance(info, dict) and len(rows) != info.get("rows"):

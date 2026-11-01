@@ -50,6 +50,10 @@ Open **http://127.0.0.1:5173/**. API documentation: **http://127.0.0.1:8000/docs
 
 The revised synthetic `WH-01` sample yielded **83 moves and 167 keeps** in our engine test. This checks the workflow, **not recommendation accuracy**. See [`sample_data/README.md`](sample_data/README.md) for dataset provenance and regeneration.
 
+### Fix a sample checksum error
+
+If an upload reports **SHA-256 does not match manifest**, the CSV bytes differ from the export described by `manifest.json`. Editing/resaving a CSV, mixing exports, or Git converting LF to CRLF can cause this. Extract the sample ZIP into a **new folder** and upload its CSVs and manifest together without opening/resaving them in Excel. The repository enforces LF for the sample CSVs so fresh Windows checkouts preserve their hashes. For real exports, obtain a matching package from the source exporter; manifest checksum verification remains mandatory.
+
 ### Evaluate post-placement observations
 
 The results page accepts an outcome CSV containing `sku_id,actual_location_id,observed_at`; `measured_round_trip_m` is optional. `observed_at` must include a timezone and be after the snapshot. The app reports coverage, placement agreement, move agreement, and route mean absolute error for measured routes. **Agreement means an operator used the proposed bin; it does not prove optimality.** Without independently measured outcomes, recommendation accuracy is **not measured**. [`sample_data/outcome_example.csv`](sample_data/outcome_example.csv) shows the format only and is not real-world evidence.
