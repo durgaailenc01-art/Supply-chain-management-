@@ -1,0 +1,15 @@
+{
+  "source": "footwear",
+  "unknown": [
+    "warehouse identity and timezone",
+    "order status",
+    "SKU size identity",
+    "stock snapshot",
+    "package dimensions and weight",
+    "bin dimensions and capacity",
+    "hazard and temperature policy",
+    "aisle edges and access",
+    "certified packing capacity"
+  ],
+  "operational_importable": false
+}

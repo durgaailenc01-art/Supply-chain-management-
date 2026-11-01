@@ -1,0 +1,6 @@
+case_id,issue_type,expected_decision
+CASE-001,capacity_exceeded,reject
+CASE-002,incompatible_co_location,flag
+CASE-003,duplicate_active_location,flag
+CASE-004,blocked_aisle,flag
+CASE-005,labor_overload,flag

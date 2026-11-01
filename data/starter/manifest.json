@@ -1,0 +1,55 @@
+{
+  "seed": 20261022,
+  "scale": "starter",
+  "source": "fully synthetic; no external data",
+  "tables": {
+    "warehouses": {
+      "rows": 2,
+      "sha256": "a170cf6f272d97acfdaf5de817b1ecb913698664baa4d1dd41ef00b2db42eac7"
+    },
+    "zones": {
+      "rows": 8,
+      "sha256": "036e9bdfc8a3e1fcba283748fdf4a6453270c1776b3424293da1671059a231c3"
+    },
+    "locations": {
+      "rows": 200,
+      "sha256": "b49e55377b859c6ba6d6d10562070fd5d50b4580f542cd0e008429d5590e929f"
+    },
+    "skus": {
+      "rows": 100,
+      "sha256": "7d4c57529f1d12fa8ec1768b34babc669954572f705750b0f17a851c5b65934a"
+    },
+    "sku_profiles": {
+      "rows": 100,
+      "sha256": "ee7a00f63e5cd28cc00009d0a5b6b5c68370f049afa8bede71029888d674fbcf"
+    },
+    "orders": {
+      "rows": 500,
+      "sha256": "c469cef8e0424746d8747a65edc15c84a93e69317f26b95616b0947e165faa64"
+    },
+    "order_lines": {
+      "rows": 2000,
+      "sha256": "00fb33b1fd861cf88e444f0b5efbae25af258282e3e6317643f725a59411c366"
+    },
+    "slot_assignments": {
+      "rows": 100,
+      "sha256": "c593fdc3cd33ac5c0713b2412b8f3cfca7ee828473f4d2599805eafff526ebb0"
+    },
+    "pick_events": {
+      "rows": 2000,
+      "sha256": "4022a034619caf7ad06e64ad6c8954ad88c061db4dc75aec3c083d54214fb1cf"
+    },
+    "replenishments": {
+      "rows": 100,
+      "sha256": "e3c2cfddfb8397c9668690557b8387582f5315bca3e510ffd111cc94072bc2e1"
+    },
+    "exception_fixtures": {
+      "rows": 5,
+      "sha256": "7f3fe29a6d1d0492a0ec3d211001886ada12d2abb2500292ba1d9d12409cc31e"
+    },
+    "ground_truth": {
+      "rows": 5,
+      "sha256": "6a131e6c9ffd0aeffa5b75c81e176b9bd59cdd98b74d9073d0a242e37d67e2a0"
+    }
+  }
+}

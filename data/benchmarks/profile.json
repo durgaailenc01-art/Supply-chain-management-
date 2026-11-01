@@ -1,0 +1,3383 @@
+{
+  "footwear": [
+    {
+      "scope": 100,
+      "counts": {
+        "products": 208,
+        "locations": 2292,
+        "orders": 100,
+        "order_lines": 689
+      },
+      "runtime_s": 0.02,
+      "canonical_full_snapshot_feasible": false,
+      "assignment_coverage": null,
+      "objective_gap": null,
+      "travel_improvement": null,
+      "missing": [
+        "warehouse identity and timezone",
+        "order status",
+        "SKU size identity",
+        "stock snapshot",
+        "package dimensions and weight",
+        "bin dimensions and capacity",
+        "hazard and temperature policy",
+        "aisle edges and access",
+        "certified packing capacity"
+      ]
+    },
+    {
+      "scope": 1000,
+      "counts": {
+        "products": 208,
+        "locations": 2292,
+        "orders": 1000,
+        "order_lines": 4411
+      },
+      "runtime_s": 0.034,
+      "canonical_full_snapshot_feasible": false,
+      "assignment_coverage": null,
+      "objective_gap": null,
+      "travel_improvement": null,
+      "missing": [
+        "warehouse identity and timezone",
+        "order status",
+        "SKU size identity",
+        "stock snapshot",
+        "package dimensions and weight",
+        "bin dimensions and capacity",
+        "hazard and temperature policy",
+        "aisle edges and access",
+        "certified packing capacity"
+      ]
+    },
+    {
+      "scope": "all",
+      "counts": {
+        "products": 208,
+        "locations": 2292,
+        "orders": 32634,
+        "order_lines": 122370
+      },
+      "runtime_s": 0.66,
+      "canonical_full_snapshot_feasible": false,
+      "assignment_coverage": null,
+      "objective_gap": null,
+      "travel_improvement": null,
+      "missing": [
+        "warehouse identity and timezone",
+        "order status",
+        "SKU size identity",
+        "stock snapshot",
+        "package dimensions and weight",
+        "bin dimensions and capacity",
+        "hazard and temperature policy",
+        "aisle edges and access",
+        "certified packing capacity"
+      ]
+    }
+  ],
+  "slaprp": [
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 534,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0262,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4636,
+        "published_lower_bound": 4636,
+        "published_gap": 0,
+        "published_runtime_s": 3.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 102,
+        "order_lines": 547,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.002,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4789,
+        "published_lower_bound": 4789,
+        "published_gap": 0,
+        "published_runtime_s": 3.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 549,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0017,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4936,
+        "published_lower_bound": 4936,
+        "published_gap": 0,
+        "published_runtime_s": 3.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 569,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0016,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5480,
+        "published_lower_bound": 5480,
+        "published_gap": 0,
+        "published_runtime_s": 3.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 522,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4873,
+        "published_lower_bound": 4873,
+        "published_gap": 0,
+        "published_runtime_s": 4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 559,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.002,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4944,
+        "published_lower_bound": 4944,
+        "published_gap": 0,
+        "published_runtime_s": 3.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 540,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5399,
+        "published_lower_bound": 5399,
+        "published_gap": 0,
+        "published_runtime_s": 3.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 549,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5357,
+        "published_lower_bound": 5357,
+        "published_gap": 0,
+        "published_runtime_s": 3.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 514,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4860,
+        "published_lower_bound": 4860,
+        "published_gap": 0,
+        "published_runtime_s": 3.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.2_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 550,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5661,
+        "published_lower_bound": 5661,
+        "published_gap": 0,
+        "published_runtime_s": 3.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 105,
+        "order_lines": 500,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4717,
+        "published_lower_bound": 4717,
+        "published_gap": 0,
+        "published_runtime_s": 6.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 106,
+        "order_lines": 532,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4858,
+        "published_lower_bound": 4858,
+        "published_gap": 0,
+        "published_runtime_s": 7.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 106,
+        "order_lines": 526,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4322,
+        "published_lower_bound": 4322,
+        "published_gap": 0,
+        "published_runtime_s": 8.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 479,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0013,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4390,
+        "published_lower_bound": 4390,
+        "published_gap": 0,
+        "published_runtime_s": 5.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 529,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5171,
+        "published_lower_bound": 5171,
+        "published_gap": 0,
+        "published_runtime_s": 5.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 105,
+        "order_lines": 533,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4754,
+        "published_lower_bound": 4754,
+        "published_gap": 0,
+        "published_runtime_s": 5.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 103,
+        "order_lines": 566,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0017,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5023,
+        "published_lower_bound": 5023,
+        "published_gap": 0,
+        "published_runtime_s": 6.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 558,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0016,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5265,
+        "published_lower_bound": 5265,
+        "published_gap": 0,
+        "published_runtime_s": 5.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 103,
+        "order_lines": 571,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5272,
+        "published_lower_bound": 5272,
+        "published_gap": 0,
+        "published_runtime_s": 4.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.3_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 102,
+        "order_lines": 530,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4797,
+        "published_lower_bound": 4797,
+        "published_gap": 0,
+        "published_runtime_s": 6.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 105,
+        "order_lines": 520,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4890,
+        "published_lower_bound": 4890,
+        "published_gap": 0,
+        "published_runtime_s": 10.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 448,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0013,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 3892,
+        "published_lower_bound": 3892,
+        "published_gap": 0,
+        "published_runtime_s": 9.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 104,
+        "order_lines": 540,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5083,
+        "published_lower_bound": 5083,
+        "published_gap": 0,
+        "published_runtime_s": 12
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 502,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 3947,
+        "published_lower_bound": 3947,
+        "published_gap": 0,
+        "published_runtime_s": 8.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 105,
+        "order_lines": 534,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0015,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 5072,
+        "published_lower_bound": 5072,
+        "published_gap": 0,
+        "published_runtime_s": 8.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 102,
+        "order_lines": 472,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4325,
+        "published_lower_bound": 4325,
+        "published_gap": 0,
+        "published_runtime_s": 11.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 513,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4229,
+        "published_lower_bound": 4229,
+        "published_gap": 0,
+        "published_runtime_s": 11
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 529,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0017,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4692,
+        "published_lower_bound": 4692,
+        "published_gap": 0,
+        "published_runtime_s": 7.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 101,
+        "order_lines": 499,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4792,
+        "published_lower_bound": 4792,
+        "published_gap": 0,
+        "published_runtime_s": 9.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O100_alpha0.4_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 100,
+        "order_lines": 471,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0014,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 3951,
+        "published_lower_bound": 3951,
+        "published_gap": 0,
+        "published_runtime_s": 9.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 203,
+        "order_lines": 1071,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10937,
+        "published_lower_bound": 10937,
+        "published_gap": 0,
+        "published_runtime_s": 7.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1116,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0026,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10350,
+        "published_lower_bound": 10350,
+        "published_gap": 0,
+        "published_runtime_s": 6.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 1087,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9923,
+        "published_lower_bound": 9923,
+        "published_gap": 0,
+        "published_runtime_s": 6.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1134,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10144,
+        "published_lower_bound": 10144,
+        "published_gap": 0,
+        "published_runtime_s": 6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 205,
+        "order_lines": 1052,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9454,
+        "published_lower_bound": 9454,
+        "published_gap": 0,
+        "published_runtime_s": 7.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 962,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10036,
+        "published_lower_bound": 10036,
+        "published_gap": 0,
+        "published_runtime_s": 6.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 1060,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0031,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9821,
+        "published_lower_bound": 9821,
+        "published_gap": 0,
+        "published_runtime_s": 6.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1097,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0028,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10135,
+        "published_lower_bound": 10135,
+        "published_gap": 0,
+        "published_runtime_s": 7.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1132,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0028,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10720,
+        "published_lower_bound": 10720,
+        "published_gap": 0,
+        "published_runtime_s": 6.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.2_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 1112,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0027,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 11677,
+        "published_lower_bound": 11677,
+        "published_gap": 0,
+        "published_runtime_s": 6.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 203,
+        "order_lines": 1008,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0026,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9823,
+        "published_lower_bound": 9823,
+        "published_gap": 0,
+        "published_runtime_s": 11.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 1088,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0028,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10289,
+        "published_lower_bound": 10289,
+        "published_gap": 0,
+        "published_runtime_s": 11.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 203,
+        "order_lines": 1046,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0023,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8692,
+        "published_lower_bound": 8692,
+        "published_gap": 0,
+        "published_runtime_s": 11.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 202,
+        "order_lines": 942,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0022,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 7670,
+        "published_lower_bound": 7670,
+        "published_gap": 0,
+        "published_runtime_s": 14.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 202,
+        "order_lines": 1060,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0023,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10510,
+        "published_lower_bound": 10510,
+        "published_gap": 0,
+        "published_runtime_s": 12.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 202,
+        "order_lines": 984,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0022,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8612,
+        "published_lower_bound": 8612,
+        "published_gap": 0,
+        "published_runtime_s": 13.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 202,
+        "order_lines": 1116,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10141,
+        "published_lower_bound": 10141,
+        "published_gap": 0,
+        "published_runtime_s": 9.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1099,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 11081,
+        "published_lower_bound": 11081,
+        "published_gap": 0,
+        "published_runtime_s": 9.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1056,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0027,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9644,
+        "published_lower_bound": 9644,
+        "published_gap": 0,
+        "published_runtime_s": 12.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.3_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 206,
+        "order_lines": 1073,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10110,
+        "published_lower_bound": 10110,
+        "published_gap": 0,
+        "published_runtime_s": 11.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 999,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0023,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 7753,
+        "published_lower_bound": 7753,
+        "published_gap": 0,
+        "published_runtime_s": 19.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 200,
+        "order_lines": 1104,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10460,
+        "published_lower_bound": 10460,
+        "published_gap": 0,
+        "published_runtime_s": 14.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 981,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0022,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8759,
+        "published_lower_bound": 8759,
+        "published_gap": 0,
+        "published_runtime_s": 17.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 208,
+        "order_lines": 1057,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8729,
+        "published_lower_bound": 8729,
+        "published_gap": 0,
+        "published_runtime_s": 19.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 203,
+        "order_lines": 1091,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 10916,
+        "published_lower_bound": 10916,
+        "published_gap": 0,
+        "published_runtime_s": 21.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 201,
+        "order_lines": 991,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0023,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 7397,
+        "published_lower_bound": 7397,
+        "published_gap": 0,
+        "published_runtime_s": 16.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 204,
+        "order_lines": 1006,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0023,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8810,
+        "published_lower_bound": 8810,
+        "published_gap": 0,
+        "published_runtime_s": 18.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 206,
+        "order_lines": 1089,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0024,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 9287,
+        "published_lower_bound": 9287,
+        "published_gap": 0,
+        "published_runtime_s": 15.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 204,
+        "order_lines": 947,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0022,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8361,
+        "published_lower_bound": 8361,
+        "published_gap": 0,
+        "published_runtime_s": 19.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O200_alpha0.4_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 203,
+        "order_lines": 989,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0025,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 8458,
+        "published_lower_bound": 8458,
+        "published_gap": 0,
+        "published_runtime_s": 20.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 51,
+        "order_lines": 255,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2213,
+        "published_lower_bound": 2213,
+        "published_gap": 0,
+        "published_runtime_s": 1.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 304,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2618,
+        "published_lower_bound": 2618,
+        "published_gap": 0,
+        "published_runtime_s": 2.2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 52,
+        "order_lines": 297,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2938,
+        "published_lower_bound": 2938,
+        "published_gap": 0,
+        "published_runtime_s": 1.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 51,
+        "order_lines": 303,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2898,
+        "published_lower_bound": 2898,
+        "published_gap": 0,
+        "published_runtime_s": 2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 55,
+        "order_lines": 277,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0013,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 3044,
+        "published_lower_bound": 3044,
+        "published_gap": 0,
+        "published_runtime_s": 1.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 53,
+        "order_lines": 288,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0013,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2728,
+        "published_lower_bound": 2728,
+        "published_gap": 0,
+        "published_runtime_s": 1.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 296,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2505,
+        "published_lower_bound": 2505,
+        "published_gap": 0,
+        "published_runtime_s": 2.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 276,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2757,
+        "published_lower_bound": 2757,
+        "published_gap": 0,
+        "published_runtime_s": 2
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 51,
+        "order_lines": 276,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2218,
+        "published_lower_bound": 2218,
+        "published_gap": 0,
+        "published_runtime_s": 1.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.2_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 53,
+        "order_lines": 292,
+        "fixed_assignments": 32
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.8,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2296,
+        "published_lower_bound": 2296,
+        "published_gap": 0,
+        "published_runtime_s": 1.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 56,
+        "order_lines": 264,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2617,
+        "published_lower_bound": 2617,
+        "published_gap": 0,
+        "published_runtime_s": 3.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 50,
+        "order_lines": 277,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2681,
+        "published_lower_bound": 2681,
+        "published_gap": 0,
+        "published_runtime_s": 3.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 51,
+        "order_lines": 258,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0009,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2012,
+        "published_lower_bound": 2012,
+        "published_gap": 0,
+        "published_runtime_s": 3.7
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 319,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2758,
+        "published_lower_bound": 2758,
+        "published_gap": 0,
+        "published_runtime_s": 2.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 55,
+        "order_lines": 297,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2712,
+        "published_lower_bound": 2712,
+        "published_gap": 0,
+        "published_runtime_s": 2.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 50,
+        "order_lines": 244,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0009,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2335,
+        "published_lower_bound": 2335,
+        "published_gap": 0,
+        "published_runtime_s": 2.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 56,
+        "order_lines": 306,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2686,
+        "published_lower_bound": 2686,
+        "published_gap": 0,
+        "published_runtime_s": 3.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 301,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2416,
+        "published_lower_bound": 2416,
+        "published_gap": 0,
+        "published_runtime_s": 2.9
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 58,
+        "order_lines": 302,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2902,
+        "published_lower_bound": 2902,
+        "published_gap": 0,
+        "published_runtime_s": 3.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.3_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 56,
+        "order_lines": 304,
+        "fixed_assignments": 28
+      },
+      "runtime_s": 0.0011,
+      "fixed_assignment_coverage": 0.7,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2687,
+        "published_lower_bound": 2687,
+        "published_gap": 0,
+        "published_runtime_s": 3.6
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v1.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 55,
+        "order_lines": 270,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2407,
+        "published_lower_bound": 2407,
+        "published_gap": 0,
+        "published_runtime_s": 5.5
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v10.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 52,
+        "order_lines": 284,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2145,
+        "published_lower_bound": 2145,
+        "published_gap": 0,
+        "published_runtime_s": 5.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v2.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 288,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2500,
+        "published_lower_bound": 2500,
+        "published_gap": 0,
+        "published_runtime_s": 4.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v3.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 51,
+        "order_lines": 249,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0009,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 1577,
+        "published_lower_bound": 1577,
+        "published_gap": 0,
+        "published_runtime_s": 5.3
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v4.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 251,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.0009,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2165,
+        "published_lower_bound": 2165,
+        "published_gap": 0,
+        "published_runtime_s": 5.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v5.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 52,
+        "order_lines": 273,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2494,
+        "published_lower_bound": 2494,
+        "published_gap": 0,
+        "published_runtime_s": 4.4
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v6.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 50,
+        "order_lines": 275,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2610,
+        "published_lower_bound": 2610,
+        "published_gap": 0,
+        "published_runtime_s": 4.1
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v7.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 57,
+        "order_lines": 297,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2599,
+        "published_lower_bound": 2599,
+        "published_gap": 0,
+        "published_runtime_s": 5.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v8.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 54,
+        "order_lines": 261,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2077,
+        "published_lower_bound": 2077,
+        "published_gap": 0,
+        "published_runtime_s": 6.8
+      }
+    },
+    {
+      "instance": "SLAPRP_Guo_small_O50_alpha0.4_v9.txt",
+      "counts": {
+        "aisles": 4,
+        "bays_per_aisle": 5,
+        "skus": 40,
+        "orders": 55,
+        "order_lines": 285,
+        "fixed_assignments": 24
+      },
+      "runtime_s": 0.001,
+      "fixed_assignment_coverage": 0.6,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 2129,
+        "published_lower_bound": 2129,
+        "published_gap": 0,
+        "published_runtime_s": 6.5
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I3_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 30,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0046,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 100,
+        "published_lower_bound": 100,
+        "published_gap": 0,
+        "published_runtime_s": 7.4
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I3_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 30,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0042,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 94,
+        "published_lower_bound": 94,
+        "published_gap": 0,
+        "published_runtime_s": 8.2
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I3_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 30,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 94,
+        "published_lower_bound": 92,
+        "published_gap": 0,
+        "published_runtime_s": 7.9
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I3_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 30,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I3_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 30,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0042,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I5_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 114,
+        "published_lower_bound": 112,
+        "published_gap": 0,
+        "published_runtime_s": 356.1
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I5_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 132,
+        "published_lower_bound": 130,
+        "published_gap": 1.52,
+        "published_runtime_s": 7200.2
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I5_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 124,
+        "published_lower_bound": 124,
+        "published_gap": 0,
+        "published_runtime_s": 2275.3
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I5_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O10_I5_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I3_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 3,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.004,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4,
+        "published_lower_bound": 4,
+        "published_gap": 0,
+        "published_runtime_s": 0.5
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I3_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 3,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.004,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4,
+        "published_lower_bound": 4,
+        "published_gap": 0,
+        "published_runtime_s": 0.5
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I3_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 3,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0043,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 4,
+        "published_lower_bound": 4,
+        "published_gap": 0,
+        "published_runtime_s": 0.5
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I3_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 3,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0039,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I3_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 3,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0039,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I5_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 5,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0039,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 6,
+        "published_lower_bound": 6,
+        "published_gap": 0,
+        "published_runtime_s": 0.7
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I5_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 5,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0042,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 6,
+        "published_lower_bound": 6,
+        "published_gap": 0,
+        "published_runtime_s": 0.7
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I5_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 5,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 6,
+        "published_lower_bound": 6,
+        "published_gap": 0,
+        "published_runtime_s": 0.7
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I5_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 5,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.004,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O1_I5_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 1,
+        "order_lines": 5,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0042,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I3_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 15,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0044,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 36,
+        "published_lower_bound": 36,
+        "published_gap": 0,
+        "published_runtime_s": 2.3
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I3_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 15,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0043,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 44,
+        "published_lower_bound": 44,
+        "published_gap": 0,
+        "published_runtime_s": 1.9
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I3_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 15,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 36,
+        "published_lower_bound": 36,
+        "published_gap": 0,
+        "published_runtime_s": 2.4
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I3_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 15,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I3_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 15,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0043,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I5_v1.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 25,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0049,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 50,
+        "published_lower_bound": 50,
+        "published_gap": 0,
+        "published_runtime_s": 6
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I5_v2.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 25,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 52,
+        "published_lower_bound": 50,
+        "published_gap": 0,
+        "published_runtime_s": 7
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I5_v3.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 25,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0041,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": {
+        "published_upper_bound": 56,
+        "published_lower_bound": 54,
+        "published_gap": 0,
+        "published_runtime_s": 794.7
+      }
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I5_v4.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 25,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0043,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A1_B10_O5_I5_v5.txt",
+      "family": "Small",
+      "counts": {
+        "aisles": 1,
+        "bays_per_aisle": 10,
+        "skus": 20,
+        "orders": 5,
+        "order_lines": 25,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0042,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D1_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0047,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D1_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0048,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D1_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0054,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D2_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0056,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D2_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0048,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D2_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.005,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D3_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.005,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D3_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0048,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I20_D3_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 200,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0057,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D1_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0055,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D1_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0052,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D1_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0054,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D2_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0053,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D2_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0053,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D2_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0108,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D3_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0053,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D3_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0057,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I50_D3_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 500,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0054,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D1_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0046,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D1_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0047,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D1_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0051,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D2_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D2_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D2_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0047,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D3_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D3_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0046,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O10_I5_D3_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 10,
+        "order_lines": 50,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0045,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O30_I20_D1_v1.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 30,
+        "order_lines": 600,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0056,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O30_I20_D1_v2.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 30,
+        "order_lines": 600,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0055,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    },
+    {
+      "instance": "SLAP-PRP_A10_B10_O30_I20_D1_v3.txt",
+      "family": "Regular",
+      "counts": {
+        "aisles": 10,
+        "bays_per_aisle": 10,
+        "skus": 200,
+        "orders": 30,
+        "order_lines": 600,
+        "fixed_assignments": 0
+      },
+      "runtime_s": 0.0056,
+      "fixed_assignment_coverage": 0.0,
+      "canonical_full_snapshot_feasible": false,
+      "slotwise_assignment_coverage": null,
+      "slotwise_objective_gap": null,
+      "slotwise_travel_improvement": null,
+      "published": null
+    }
+  ],
+  "total_runtime_s": 1.256,
+  "comparison_note": "Published SLAPRP routing objective is not the Slotwise depot round-trip proxy. Missing physical and safety fields prevent a valid canonical optimization run; no cross-objective gap is reported."
+}
