@@ -10,6 +10,7 @@ from pathlib import Path
 from backend.tests.canonical_fixtures import SNAPSHOT, record, shared_bin_rows, write_package
 from backend.live_upload import run_upload
 from backend.live_engine import _paths
+from backend.live_evaluation import evaluate
 
 
 class LiveWorkflowTests(unittest.TestCase):
@@ -21,6 +22,16 @@ class LiveWorkflowTests(unittest.TestCase):
     def files(self, rows, *, manifest=True):
         write_package(self.folder, rows)
         return [(p.name, p.read_bytes()) for p in self.folder.iterdir() if p.suffix == ".csv" or manifest and p.name == "manifest.json"]
+
+    def test_observed_evaluation_requires_independent_post_snapshot_rows(self):
+        result = {"snapshot_at": SNAPSHOT, "recommendations": [{"sku_id": "S1", "proposed_location_id": "L2", "proposed_round_trip_m": 10, "decision": "move"}, {"sku_id": "S2", "proposed_location_id": "L1", "proposed_round_trip_m": 20, "decision": "keep"}]}
+        observed = b"sku_id,actual_location_id,observed_at,measured_round_trip_m\nS1,L2,2026-02-01T00:00:00Z,12\n"
+        metrics = evaluate(result, observed)
+        self.assertEqual(metrics["coverage_pct"], 50)
+        self.assertEqual(metrics["move_agreement_pct"], 100)
+        self.assertEqual(metrics["route_mae_m"], 2)
+        with self.assertRaisesRegex(ValueError, "after the analysis snapshot"):
+            evaluate(result, observed.replace(b"2026-02-01", b"2026-01-01"))
 
     def test_full_upload_produces_real_move_and_route_improvement(self):
         rows = shared_bin_rows()
@@ -35,6 +46,9 @@ class LiveWorkflowTests(unittest.TestCase):
         self.assertEqual(by_sku["S1"]["current_location_id"], "L1")
         self.assertEqual(by_sku["S1"]["proposed_location_id"], "L2")
         self.assertEqual(by_sku["S1"]["decision"], "move")
+        self.assertEqual(result["movement_lines"][0]["source_location_id"], "L1")
+        self.assertEqual(result["movement_lines"][0]["proposed_location_id"], "L2")
+        self.assertEqual(result["movement_lines"][0]["handling_unit_count"], 2)
         self.assertGreater(result["metrics"]["estimated_distance_improvement_pct"], 0)
         self.assertEqual(result["metrics"]["unassigned_skus"], 0)
         self.assertLessEqual(result["metrics"]["optimization_score"], result["metrics"]["theoretical_travel_score_ceiling_pct"])
@@ -45,6 +59,14 @@ class LiveWorkflowTests(unittest.TestCase):
         result = run_upload(self.files(shared_bin_rows(), manifest=False), "Fixture warehouse", SNAPSHOT)
         self.assertEqual(result["status"], "provisional_analysis")
         self.assertIn("snapshot_unverified", {item["code"] for item in result["validation"]["warnings"]})
+
+    def test_manifest_snapshot_mismatch_is_rejected_before_full_import(self):
+        with self.assertRaisesRegex(ValueError, "differs from manifest.snapshot_at"):
+            run_upload(self.files(shared_bin_rows()), "WH1", "2026-01-31T12:01:00Z")
+
+    def test_manifest_warehouse_mismatch_names_available_warehouse(self):
+        with self.assertRaisesRegex(ValueError, "Available: Fixture warehouse \\(WH1\\)"):
+            run_upload(self.files(shared_bin_rows()), "WH-DEMO-01", SNAPSHOT)
 
     def test_invalid_certificate_does_not_block_other_valid_packing_evidence(self):
         rows = shared_bin_rows()
@@ -257,6 +279,20 @@ class LiveWorkflowTests(unittest.TestCase):
                                              files=[("files", (name, content, "text/csv" if name.endswith(".csv") else "application/json")) for name, content in self.files(shared_bin_rows())]), timeout=10)
                 self.assertEqual(response.status_code, 200, response.text)
                 self.assertEqual(response.json()["metrics"]["assigned_skus"], 2)
+                analysis_id = response.json()["analysis_id"]
+                placements = await client.get(f"/api/live/export/{analysis_id}/placements.csv")
+                self.assertEqual(placements.status_code, 200)
+                self.assertIn("proposed_location_id", placements.text)
+                self.assertIn("S1", placements.text)
+                movements = await client.get(f"/api/live/export/{analysis_id}/movements.csv")
+                self.assertEqual(movements.status_code, 200)
+                self.assertIn("source_location_id", movements.text)
+                workbook = await client.get(f"/api/live/export/{analysis_id}/results.xlsx")
+                self.assertEqual(workbook.status_code, 200)
+                from openpyxl import load_workbook
+                book = load_workbook(io.BytesIO(workbook.content))
+                self.assertEqual(book.sheetnames, ["Placements", "Stock movements"])
+                self.assertEqual(book["Placements"]["C2"].value, "S1")
                 legacy = await asyncio.wait_for(client.get("/api/overview"), timeout=10)
                 self.assertEqual(legacy.status_code, 200, legacy.text)
         asyncio.run(check())

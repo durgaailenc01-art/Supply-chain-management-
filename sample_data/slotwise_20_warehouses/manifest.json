@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "synthetic-20w-10000l-5000s",
+  "tenant_id": "synthetic-sample",
+  "source_system": "synthetic-wms",
+  "mapping_version": "generator-v1",
+  "storage_policy_version": "synthetic-policy-v1",
+  "import_kind": "full_snapshot",
+  "snapshot_at": "2026-10-31T00:00:00Z",
+  "exported_at": "2026-10-31T00:05:00Z",
+  "consistency_method": "transactional",
+  "consistency_token": "synthetic-generation",
+  "history_from": "2026-10-01T00:00:00Z",
+  "history_to": "2026-10-31T00:00:00Z",
+  "warehouse_ids": [
+    "WH-01",
+    "WH-02",
+    "WH-03",
+    "WH-04",
+    "WH-05",
+    "WH-06",
+    "WH-07",
+    "WH-08",
+    "WH-09",
+    "WH-10",
+    "WH-11",
+    "WH-12",
+    "WH-13",
+    "WH-14",
+    "WH-15",
+    "WH-16",
+    "WH-17",
+    "WH-18",
+    "WH-19",
+    "WH-20"
+  ],
+  "source_timezones": {
+    "synthetic-wms": "UTC"
+  },
+  "files": {
+    "warehouses.csv": {
+      "filename": "warehouses.csv",
+      "rows": 20,
+      "sha256": "f853e21de1b3073241b0074445f6634c81d11aed52db179c1d639f4babe81ea5",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-warehouses",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "zones.csv": {
+      "filename": "zones.csv",
+      "rows": 20,
+      "sha256": "34f8c59dbc0703e0f4fff304be51ed70cab284da654a5a2ca595563dea92311f",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-zones",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "locations.csv": {
+      "filename": "locations.csv",
+      "rows": 10000,
+      "sha256": "0312f07f70d39eb5ff6cce1d3c25039fec9872371bc800afc8d5e00911a6a5fb",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-locations",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "historical_location_refs.csv": {
+      "filename": "historical_location_refs.csv",
+      "rows": 0,
+      "sha256": "64374bacbccfa8127075a9fc75a1c07a842bfdb4018347084928f27317f8e9da",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-historical_location_refs",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "skus.csv": {
+      "filename": "skus.csv",
+      "rows": 5000,
+      "sha256": "61d8356db4f7ee10cc1c3e95aafcdc935bdf1eb5dd23f9307f7cf8829f70e904",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-skus",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "sku_profiles.csv": {
+      "filename": "sku_profiles.csv",
+      "rows": 5000,
+      "sha256": "00799d360013f07173e31dfd2c287d678a9d0ed6e0645390ed6d351101592857",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-sku_profiles",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "sku_uom_conversions.csv": {
+      "filename": "sku_uom_conversions.csv",
+      "rows": 0,
+      "sha256": "4a0166f4c2aa4f93c37955f769f7d5c752210fbe73875566894d76c05f1a209e",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-sku_uom_conversions",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "sku_packaging_profiles.csv": {
+      "filename": "sku_packaging_profiles.csv",
+      "rows": 5000,
+      "sha256": "efddd07c5457e69054896a5425c15d29d4385d60533e39204b585b943aae8bb9",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-sku_packaging_profiles",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "sku_lots.csv": {
+      "filename": "sku_lots.csv",
+      "rows": 0,
+      "sha256": "39075b1ad439f893d5cef0eb2c1ce563aa9aaa1d28a791e595289abe7c30119d",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-sku_lots",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "inventory_by_location.csv": {
+      "filename": "inventory_by_location.csv",
+      "rows": 5000,
+      "sha256": "e34a26da58ceada60aff0deb694e6a4995babaac2ac8d14d8309ea31daf700d9",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-inventory_by_location",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "location_pack_capacities.csv": {
+      "filename": "location_pack_capacities.csv",
+      "rows": 10000,
+      "sha256": "d14d35454b65ff7bd55cd562d2bac7ba33ee3799a2e4c75b37c10f8a11dc576c",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-location_pack_capacities",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "slot_assignments.csv": {
+      "filename": "slot_assignments.csv",
+      "rows": 5000,
+      "sha256": "1b0f572abb064d78c3f9bbf97ace85da2561d1c3cf411fdc5b299d71d9bfeb73",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-slot_assignments",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "co_storage_rules.csv": {
+      "filename": "co_storage_rules.csv",
+      "rows": 0,
+      "sha256": "f73a162e01f12343c62f064feda78bca24b7f3636898b71c1fa7641d07e255ff",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-co_storage_rules",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "shared_bin_plans.csv": {
+      "filename": "shared_bin_plans.csv",
+      "rows": 0,
+      "sha256": "65058f9a8059a73e780a367bc8b649059f4b2148f81118960aaf5f5f244497c8",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-shared_bin_plans",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "shared_bin_plan_items.csv": {
+      "filename": "shared_bin_plan_items.csv",
+      "rows": 0,
+      "sha256": "53dc8e904680ad269f83891a2bc437141e4b2177b34f480f77bc6eba74a5c605",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-shared_bin_plan_items",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "orders.csv": {
+      "filename": "orders.csv",
+      "rows": 5000,
+      "sha256": "1e1d2c27ee134fe48558f07aa0d00ae6675f224fe4dc8ab5fae84c4e086fe8a0",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-orders",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "order_lines.csv": {
+      "filename": "order_lines.csv",
+      "rows": 5000,
+      "sha256": "2e146814889628b64458e9eb49269dcdefdfa6a400ef0700912a7eeef4bdb6be",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-order_lines",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "pick_events.csv": {
+      "filename": "pick_events.csv",
+      "rows": 0,
+      "sha256": "231aa5d34d2a55512a720beaa75a34126fc80fd71b7e947b39f01c88ceb406b6",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-pick_events",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "replenishment_events.csv": {
+      "filename": "replenishment_events.csv",
+      "rows": 0,
+      "sha256": "88888b62254bb7a780e959b1f41bcede56b66177b7db4135509818e05d4644cd",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-replenishment_events",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "aisle_nodes.csv": {
+      "filename": "aisle_nodes.csv",
+      "rows": 10020,
+      "sha256": "46b4eda87faeab3e0c78fafb2f9d8c24292a5b60711c4d7cdadb1b3da904bf52",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-aisle_nodes",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "aisle_edges.csv": {
+      "filename": "aisle_edges.csv",
+      "rows": 10000,
+      "sha256": "f4504238ef0a854cc0d96b1defe0d98dbcbeb61819ddab57cfcb44f7ddd1ec76",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-aisle_edges",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "location_access.csv": {
+      "filename": "location_access.csv",
+      "rows": 10000,
+      "sha256": "6f2800e40c093fac51dbef6f3ff7a076920b4fba959c56fbc1c16d46d919e01a",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-location_access",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "location_hazard_permissions.csv": {
+      "filename": "location_hazard_permissions.csv",
+      "rows": 10000,
+      "sha256": "ec1a7797aead4c7bc93128f4c9e88b5ff506ad8f36680c19d3a12a989c8c8b19",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-location_hazard_permissions",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "hazard_segregation_rules.csv": {
+      "filename": "hazard_segregation_rules.csv",
+      "rows": 20,
+      "sha256": "9acc496a7998286f96ca373ed469a63b448a406beeaf55998a906ddcb402e883",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-hazard_segregation_rules",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    },
+    "hazard_separation_evidence.csv": {
+      "filename": "hazard_separation_evidence.csv",
+      "rows": 0,
+      "sha256": "f4a9d426cd9a00494b3b1ba009ede329e3fbd9a31cf3939f3565cc60324cb28e",
+      "source_extracts": [
+        {
+          "source_system": "synthetic-wms",
+          "source_extract_id": "generated-hazard_separation_evidence",
+          "captured_at": "2026-10-31T00:00:00Z"
+        }
+      ]
+    }
+  }
+}

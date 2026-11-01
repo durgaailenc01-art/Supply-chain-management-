@@ -1,61 +1,70 @@
-# Warehouse Slotting Optimizer
+# Slotwise — warehouse slotting decision support
 
-A reproducible, CSV-backed decision-support demo for placing SKUs in warehouse pick locations. The generator creates master data, orders, baseline assignments, pick events, replenishments, and five labelled exception fixtures. The optimizer applies physical and compatibility rules before comparing simulated travel distance on the **same orders**.
+Slotwise recommends SKU pick-bin placements from demand, package measurements, bin capacity, compatibility rules, and an aisle graph. It does **not** move physical stock. The **Upload & optimize** workflow analyzes canonical warehouse snapshots. The **legacy demo** generates and evaluates a separate synthetic assessment dataset.
 
-## Quick start
+## Fresh clone: install and run
 
-Python 3.11+ and Node 20+ are required. No database or cloud account is needed.
+Requires Python 3.11/3.12, Node.js 20+, and npm. No database, cloud account, or API key is needed. Run these PowerShell commands from the repository root:
 
 ```powershell
-python -m venv .venv
+git clone https://github.com/yervavivekanandakumar-cyber/Supply-chain-management-.git
+cd Supply-chain-management-
+py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install -r backend/requirements.txt
-python -m backend.generate --scale starter
-python -m backend.optimize --dataset data/starter
-uvicorn backend.app:app --reload
+python -m pip install --upgrade pip
+python -m pip install -r backend/requirements.txt
 ```
 
-In another terminal:
+Use `py -3.11` if Python 3.12 is unavailable. If activation is blocked, invoke `.\.venv\Scripts\python.exe` directly. Start the backend in terminal 1:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn backend.app:app --reload --host 127.0.0.1 --port 8000
+```
+
+Start the frontend in terminal 2:
 
 ```powershell
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
-Open the Vite URL. API docs are at `http://127.0.0.1:8000/docs`. The default API reads `data/starter`. Set `SLOTTING_DATA_DIR` to another dataset directory before launching the API. In development, Vite proxies `/api` requests to FastAPI on port 8000; the UI reads all dataset values from those endpoints. For separate deployment origins, set `VITE_API_BASE_URL` in `frontend/.env` and include the frontend origin in `SLOTTING_CORS_ORIGINS` for the API. Example values are in each `.env.example` file.
+Open **http://127.0.0.1:5173/**. API documentation: **http://127.0.0.1:8000/docs**. Keep both terminals running. The backend terminal prints validation, candidate rejections, assignments, and metrics.
 
-## Full dataset and reproducibility
+## Test the upload workflow
+
+1. Extract [`sample_data/slotwise_20_warehouses.zip`](sample_data/slotwise_20_warehouses.zip), or use the already extracted [`sample_data/slotwise_20_warehouses/`](sample_data/slotwise_20_warehouses/) folder. In **Upload & optimize**, select **all 25 CSV files plus `manifest.json`**. ZIP upload itself is unsupported.
+2. The manifest fills the warehouse and snapshot fields. Select `WH-01` through `WH-20`. The snapshot is `2026-10-31T00:00:00Z`, displayed as **31 October 2026, 05:30:00 India time**. Click **Process dataset**. A large import can take 30 seconds or more.
+3. Review **Place in**, moves, keeps, unassigned SKUs, validation findings, and modeled travel. Open a row for its reason. Download the placements CSV, stock movements CSV, or Excel workbook. They are proposals for review, not automatic WMS commands.
+
+The revised synthetic `WH-01` sample yielded **83 moves and 167 keeps** in our engine test. This checks the workflow, **not recommendation accuracy**. See [`sample_data/README.md`](sample_data/README.md) for dataset provenance and regeneration.
+
+### Evaluate post-placement observations
+
+The results page accepts an outcome CSV containing `sku_id,actual_location_id,observed_at`; `measured_round_trip_m` is optional. `observed_at` must include a timezone and be after the snapshot. The app reports coverage, placement agreement, move agreement, and route mean absolute error for measured routes. **Agreement means an operator used the proposed bin; it does not prove optimality.** Without independently measured outcomes, recommendation accuracy is **not measured**. [`sample_data/outcome_example.csv`](sample_data/outcome_example.csv) shows the format only and is not real-world evidence.
+
+## Legacy assessment dataset and tests
+
+The committed `data/starter/` works immediately. The legacy generator targets **20 warehouses, 10,000 locations, 5,000 SKUs, and 100,000 order lines** at full scale using seed `20261022`:
 
 ```powershell
 python -m backend.generate --scale full
 python -m backend.optimize --dataset data/full
 python -m backend.validate --dataset data/full
 python -m backend.reproducibility --scale starter
-python -m backend.export --dataset data/starter
-python -m backend.demand_forecast --dataset data/starter
+python -m unittest discover -s backend/tests -q
+cd frontend
+npm ci
+npm run build
 ```
 
-The full scale generates 20 warehouses, 10,000 locations, 5,000 SKUs and 100,000 order lines. Full generated data is ignored by Git; commit the small starter data and regenerate the full dataset for evaluation. The export command writes JSON and SQLite-compatible `seed.sql`. Each dataset contains a manifest with row counts and SHA-256 checksums. All data is synthetic, generated with seed `20261022`.
+`data/full/` is Git-ignored and must be generated locally. Labelled `ground_truth.csv` is separate from optimizer inputs. The legacy demo uses a deterministic greedy assignment and simplified simulated aisle distance. Its CSVs are **not complete measured WMS snapshots** for the live uploader.
 
-## Architecture and method
+## Accepted input and limits
 
-`backend/generate.py` creates immutable input CSV files and separate labelled exception fixtures. `backend/engine.py` performs candidate filtering, global one-SKU-per-location assignment, pick and replenishment simulation, validation, and metrics. `backend/app.py` serves JSON APIs. React displays the results and can trigger a fresh optimization run. Proposed assignment records, recommendations, and metrics are stored under `data/<scale>/runs/<run_id>/`, with the source manifest checksum and algorithm configuration recorded in each run. The generator never overwrites an existing dataset unless `--force` is given.
+The live uploader accepts canonical CSV packages, canonical CSV tables without a manifest, and supported XLSX/XLSM tables. It maps a few documented header aliases. It **cannot safely process arbitrary CSV formats**: warehouse identity, measured bins, package dimensions and weights, inventory, assignments, policies, and aisle access must join correctly. Missing physical or safety values must be supplied by the warehouse, not invented. See the [data contract](docs/WAREHOUSE_DATA_CONTRACT.md), [importer guide](docs/CANONICAL_IMPORTER.md), and [submission readiness assessment](docs/SUBMISSION_READINESS.md).
 
-Hard constraints: same warehouse, active/unblocked slot, compatible temperature and hazard class, fitting dimensions, enough weight/volume capacity, and one active SKU per location. Oversized SKUs are placed first because they have the fewest options. Remaining eligible SKUs are ranked by observed order-line picks. Eligible locations are ranked by walking distance from the dock, with larger pick faces breaking distance ties. A deterministic greedy matching reserves each selected location globally. The baseline is a valid seeded random placement independent of demand. This is an explainable heuristic, not a claim of global optimality.
+The live engine uses a constrained heuristic on larger uploads and checked branch-and-bound for at most 8 movable SKUs and 20 candidate bins. Picking travel is a modeled shortest-path depot-to-bin round trip, not measured batch travel. Replenishment cycles are capacity estimates. The optional demand forecast is separate from live slotting. Synthetic site certificates are fictional and only suitable for testing.
 
-Distance is a simulated round-trip aisle walk: `2 * (aisle * 4 + bay * 2)` metres per pick. The same order lines and geometry are used for baseline and optimized results. Picking time assumes 1.2 m/s walk speed plus 15 seconds handling per line. Replenishment count is `ceil(total ordered units / floor(location capacity / SKU unit volume)) - 1`, bounded below by zero. Space utilization uses a stock proxy of up to one pick-face capacity of observed ordered units per SKU; it is not an inventory measurement. All results are estimates, not measured operational savings.
-
-See [data dictionary](docs/data_dictionary.md), [relationships and lifecycle](docs/architecture.md), [business rules](docs/business_rules.md), [validation report](docs/validation_report.md), and [demo guide](docs/demo_guide.md). Exceptions are in `ground_truth.csv` and are excluded from optimizer inputs. The fixture detector reports physical overcapacity, incompatible co-location, duplicate active location, blocked aisle, and labor overload.
-
-## Demo flow
-
-1. Generate starter data and run optimization.
-2. Open the dashboard and compare baseline versus proposed simulated distance and time.
-3. Inspect a recommendation, its reason and physical constraints.
-4. Open exceptions to show detection of all five labelled cases.
-5. Run validation and reproducibility commands, then show the manifest.
-
-## API
-
-`GET /api/overview?warehouse_id=WH-001`, `GET /api/warehouses`, `GET /api/recommendations?warehouse_id=WH-001&search=SKU-000007&sort=impact&limit=20&offset=0`, `GET /api/exceptions`, `GET /api/validation`, `GET /api/demand-forecast`, `POST /api/optimize`, `GET /api/export/{table}`. Omitting `warehouse_id` returns the all-warehouse overview. Recommendation sorting supports `impact`, `frequency`, and `sku`. The export endpoint serves CSV for an allowlisted table. The optional demand forecast uses pandas, NumPy, and scikit-learn with a chronological 14-day holdout and reports its error against a rolling-mean baseline. It does not override physical slotting constraints. The API is designed for a local, single-user demo; no authentication or concurrent writes are provided.
+This local prototype has no authentication, database, durable analysis storage, or multi-worker coordination. Download results before restarting the backend. Do not use synthetic recommendations for physical stock moves.

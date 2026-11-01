@@ -79,6 +79,7 @@ export type Forecast = {
 }
 
 export type LiveResult = {
+  analysis_id: string
   dataset_id: string
   warehouse_id: string
   warehouse_name: string
@@ -106,7 +107,10 @@ export type LiveResult = {
     proposed_round_trip_m: number | null; current_estimated_refill_cycles: number | null; estimated_refill_cycles: number | null
     reason: string; constraint_violations: string[]
   }[]
+  movement_lines: { sku_id: string; source_location_id: string; proposed_location_id: string; packaging_profile_id: string; lot_id: string | null; handling_unit_count: number; on_hand_qty: number; base_uom: string; stock_status: string; action: string }[]
 }
+
+export type LiveEvaluation = { observed_skus: number; proposed_skus: number; coverage_pct: number | null; placement_agreement_pct: number; evaluated_moves: number; move_agreement_pct: number | null; measured_routes: number; route_mae_m: number | null; note: string }
 
 const base = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 
@@ -150,5 +154,10 @@ export const api = {
     form.append('snapshot_at', snapshotAt)
     files.forEach(file => form.append('files', file))
     return request<LiveResult>('/live/optimize', { method: 'POST', body: form })
+  },
+  evaluateLive: (analysisId: string, file: File) => {
+    const form = new FormData()
+    form.append('file', file)
+    return request<LiveEvaluation>(`/live/evaluate/${analysisId}`, { method: 'POST', body: form })
   },
 }

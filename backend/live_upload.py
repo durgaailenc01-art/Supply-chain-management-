@@ -161,6 +161,18 @@ def run_upload(files: list[tuple[str, bytes]], warehouse_name: str, snapshot_at:
     if manifest_bytes is not None:
         if snapshot > datetime.now(timezone.utc):
             raise ValueError("Snapshot time cannot be in the future for a manifest-backed operational snapshot.")
+        try:
+            preview = json.loads(manifest_bytes)
+            manifest_snapshot = datetime.fromisoformat(str(preview["snapshot_at"]).replace("Z", "+00:00")).astimezone(timezone.utc)
+        except (ValueError, KeyError, TypeError, AttributeError):
+            preview = None  # The canonical importer reports the precise manifest error.
+        if preview is not None:
+            if manifest_snapshot != snapshot:
+                raise ValueError(f"Entered snapshot_at={snapshot.isoformat()} differs from manifest.snapshot_at={manifest_snapshot.isoformat()}. Use the exact manifest snapshot time.")
+            available = [(row.get("warehouse_id", ""), row.get("name", "")) for row in tables.get("warehouses", [])]
+            if available and not any(warehouse_name.strip().casefold() in {warehouse_id.casefold(), name.casefold()} for warehouse_id, name in available):
+                choices = ", ".join(f"{name} ({warehouse_id})" for warehouse_id, name in available[:20])
+                raise ValueError(f"Warehouse {warehouse_name!r} is not in the uploaded package. Available: {choices}")
         if len(raw_csv) != len(files) - 1:
             raise ValueError("A manifest package must contain CSV files only; Excel sheets cannot retain its byte checksums")
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as temp:
