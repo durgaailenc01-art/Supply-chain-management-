@@ -78,6 +78,36 @@ export type Forecast = {
   }[]
 }
 
+export type LiveResult = {
+  dataset_id: string
+  warehouse_id: string
+  warehouse_name: string
+  snapshot_at: string
+  demand_source: string
+  status: string
+  assumptions: string[]
+  statistics: { skus: number; locations: number; inventory_rows: number; demand_lines: number; candidate_locations: number }
+  metrics: {
+    assigned_skus: number; unassigned_skus: number
+    baseline_pick_distance_m: number; proposed_pick_distance_m: number
+    comparable_baseline_m: number; comparable_proposed_m: number
+    estimated_distance_improvement_pct: number | null; optimization_score: number | null
+    theoretical_travel_score_ceiling_pct: number | null
+    unserved_pick_count: number
+    baseline_utilization_pct: number | null; proposed_utilization_pct: number | null
+    baseline_replenishment_cycles: number | null; estimated_replenishment_cycles: number | null
+    constraint_violations: Record<string, number>
+  }
+  validation: { warnings: { code: string; detail: string }[]; incidents: { code: string; warehouse_id: string; location_id: string; detail: string }[]; blocked_locations: Record<string, string[]> }
+  recommendations: {
+    sku_id: string; sku_name: string; current_location_id: string | null; proposed_location_id: string | null
+    decision: string; status: string; pick_count: number; demand_units: number
+    demand_velocity_picks_per_day: number | null; current_round_trip_m: number | null
+    proposed_round_trip_m: number | null; current_estimated_refill_cycles: number | null; estimated_refill_cycles: number | null
+    reason: string; constraint_violations: string[]
+  }[]
+}
+
 const base = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 
 export function apiUrl(path: string): string {
@@ -114,4 +144,11 @@ export const api = {
   validation: () => request<Validation>('/validation'),
   forecast: () => request<Forecast>('/demand-forecast'),
   optimize: () => request<Overview['metrics']>('/optimize', { method: 'POST' }),
+  optimizeUpload: (files: File[], warehouseName: string, snapshotAt: string) => {
+    const form = new FormData()
+    form.append('warehouse_name', warehouseName)
+    form.append('snapshot_at', snapshotAt)
+    files.forEach(file => form.append('files', file))
+    return request<LiveResult>('/live/optimize', { method: 'POST', body: form })
+  },
 }

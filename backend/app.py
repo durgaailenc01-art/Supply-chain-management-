@@ -2,15 +2,19 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 from .engine import detect_exceptions, metrics as calculate_metrics, optimize_dataset, read_csv, workload
 from .validate import validate_dataset
+from .live_upload import run_upload
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 
 DATASET = Path(os.getenv("SLOTTING_DATA_DIR", "data/starter"))
 app = FastAPI(title="Warehouse Slotting Optimizer", version="0.1.0")
@@ -123,6 +127,32 @@ def optimize() -> dict:
     if not (DATASET / "manifest.json").exists():
         raise HTTPException(503, "Dataset missing")
     return optimize_dataset(DATASET)
+
+
+@app.post("/api/live/optimize")
+async def optimize_uploaded(
+    warehouse_name: str = Form(...), snapshot_at: str = Form(...), files: list[UploadFile] = File(...)
+) -> dict:
+    if len(files) > 32:
+        raise HTTPException(422, "Upload at most 32 files")
+    payload = []
+    for upload in files:
+        content = await upload.read(25_000_001)
+        if len(content) > 25_000_000:
+            raise HTTPException(413, f"{upload.filename} is larger than 25 MB")
+        payload.append((upload.filename or "", content))
+    try:
+        live_log = logging.getLogger("slotwise.live")
+        live_log.info("Starting uploaded optimization | warehouse=%s | snapshot=%s | files=%d", warehouse_name, snapshot_at, len(payload))
+        result = run_upload(payload, warehouse_name, snapshot_at)
+        live_log.info("Completed uploaded optimization | dataset=%s | status=%s | assigned=%s | unassigned=%s | score=%s | incidents=%d",
+                      result["dataset_id"], result["status"], result["metrics"]["assigned_skus"],
+                      result["metrics"]["unassigned_skus"], result["metrics"]["optimization_score"],
+                      len(result["validation"]["incidents"]))
+        return result
+    except ValueError as exc:
+        logging.getLogger("slotwise.live").warning("Upload rejected: %s", exc)
+        raise HTTPException(422, str(exc)) from exc
 
 
 @app.get("/api/export/{table}")

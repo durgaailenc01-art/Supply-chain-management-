@@ -4,3 +4,6 @@ pandas>=2.2,<3
 numpy>=2.0,<3
 scikit-learn>=1.5,<2
 pytest>=8,<10
+tzdata>=2025.1
+python-multipart>=0.0.20
+openpyxl>=3.1,<4

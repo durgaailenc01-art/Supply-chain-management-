@@ -1,0 +1,15 @@
+{
+  "source": "instances/instances_Guo_2021/SLAPRP_Guo_small_O100_alpha0.2_v1.txt",
+  "unknown": [
+    "warehouse identity",
+    "timestamps",
+    "order quantities and status",
+    "physical inventory",
+    "SKU/package dimensions and weight",
+    "bin capacity",
+    "hazard and temperature policy",
+    "canonical aisle edges and picker access",
+    "certified packing capacity"
+  ],
+  "operational_importable": false
+}
