@@ -1,6 +1,16 @@
+**AI prompt history: [prompts.md](prompts.md) records the user prompts available for this assignment, including the initial planning prompts.**
+
 # Slotwise — warehouse slotting decision support
 
 Slotwise recommends SKU pick-bin placements from demand, package measurements, bin capacity, compatibility rules, and an aisle graph. It does **not** move physical stock. The **Upload & optimize** workflow analyzes canonical warehouse snapshots. The **legacy demo** generates and evaluates a separate synthetic assessment dataset.
+
+## Import a dataset with different headers
+
+Select CSV, XLSX or XLSM files in the upload dialog and click **Inspect data and map columns**. Inspection works before entering a warehouse or snapshot. It displays row counts, columns, blank cells and a preview, including for unrelated online datasets. CSV supports UTF-8 and BOM-marked UTF-16, with comma, semicolon, tab or pipe delimiters.
+
+For noncanonical exports, select the canonical table for each file or sheet, map source columns using the dropdowns, and enable **Use these column mappings when processing**. Review the missing required fields and tables. Names and headers may differ; values, units and references still need to satisfy the [data contract](docs/WAREHOUSE_DATA_CONTRACT.md). Mapping does not infer unit conversions, packaging approvals or safety policies. Tables left unmapped are excluded from placement processing. Duplicate target fields/tables are rejected explicitly. Manifest packages retain their original checksummed files and bypass mapping.
+
+Enter the warehouse name or ID present in the mapped `warehouses` export and its exact snapshot time, then process. A new warehouse needs its own warehouse, zone, bin, inventory, package, policy and aisle exports; entering a name alone cannot establish its layout. Sales-only datasets can be inspected but cannot supply reliable physical placement recommendations. Inspection is a data profile, not optimization or accuracy evaluation.
 
 ## Fresh clone: install and run
 

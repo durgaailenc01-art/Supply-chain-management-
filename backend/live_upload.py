@@ -30,8 +30,12 @@ COLUMN_ALIASES = {
 
 def _csv_rows(data: bytes, filename: str) -> list[dict[str, str]]:
     try:
-        text = data.decode("utf-8-sig")
-        reader = csv.DictReader(io.StringIO(text), strict=True)
+        text = data.decode("utf-16" if data.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8-sig")
+        try:
+            dialect = csv.Sniffer().sniff(text[:65536], delimiters=",;\t|")
+        except csv.Error:
+            dialect = csv.excel
+        reader = csv.DictReader(io.StringIO(text), dialect=dialect, strict=True)
         if not reader.fieldnames or len(reader.fieldnames) != len(set(reader.fieldnames)):
             raise ValueError("header is missing or duplicated")
         rows = list(reader)
@@ -93,7 +97,7 @@ def _canonicalize(table: str, rows: list[dict[str, str]]) -> list[dict[str, str]
         mapped = {}
         mapped_sources = {}
         for key, value in raw.items():
-            source = key.casefold()
+            source = re.sub(r"[^a-z0-9]+", "_", key.strip().casefold()).strip("_")
             target = aliases.get(source, source)
             if target in expected:
                 value = str(value) if value is not None else ""
