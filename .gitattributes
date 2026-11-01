@@ -1,0 +1,4 @@
+# Manifest SHA-256 values refer to exact CSV bytes. Preserve sample checkouts
+# on Windows, Linux and macOS regardless of core.autocrlf.
+sample_data/slotwise_20_warehouses/*.csv text eol=lf
+sample_data/slotwise_20_warehouses/manifest.json text eol=lf
